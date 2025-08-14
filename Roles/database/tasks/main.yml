@@ -14,15 +14,14 @@
 
 - name: Create a new database
   community.mysql.mysql_db:
-    name: kaizen
+    name: "{{ db_name }}"
     state: present
     login_unix_socket: /run/mysqld/mysqld.sock
 
 - name: Create database user
   community.mysql.mysql_user:
-    name: hello
-    password: kaizen123
+    name: "{{ db_user }}"
+    password: "{{ db_pass }}"
     priv: '*.*:ALL'
     state: present
     login_unix_socket: /run/mysqld/mysqld.sock
-    
